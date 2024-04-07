@@ -6,19 +6,29 @@
 }
 
 .header {
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
-  margin: 2rem;
+  padding: 4rem;
   font-family: treasure-map;
+  background-color: #7fb9c4;
+  border: 2px solid #333c65;
 }
 
-.store_cards {
-  width: 80%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+.button {
+  background-color: #ceebef;
+  border: 2px solid #333c65;
+  border-radius: 1rem;
+  inline-size: 12rem;
+  block-size: 4rem;
+  font-size: 1.25rem;
+  align-self: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: aye-matey;
+  font-weight: bold;
 }
+.button:hover {background-color: #c9e3d6}
+
 
 @font-face {
   font-family: treasure-map;

@@ -11,16 +11,24 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.header}>Scallywag Scanner</h1>
-      <label htmlFor="myfile">Select a file: </label>
-      <input type="file" id="myfile" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
-                ref={inputRef}>
+      
+      <label className={styles.button} for="file-upload">
+        select file
+        <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
+            onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
+            ref={inputRef}>
+        </input>
+      </label>
+      
 
-                </input>
       {file ? 
         <div><p>I did things</p>
         <img src={file} />
-      </div>
+        </div>
        : null}
+
+      <br></br>
+      <button className={styles.button} onclick="">get pirate's opinion!</button>
     </main>
   );
 }

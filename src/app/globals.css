@@ -6,3 +6,11 @@ body {
     sans-serif;
   font-size: 100%;
 }
+
+input[type="file"] {
+  display: none;
+}
+input {
+  opacity: 0;
+  position: absolute;
+}
