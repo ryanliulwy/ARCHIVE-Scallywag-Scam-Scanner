@@ -154,6 +154,21 @@ const FileGetter = () => {
 
       <br></br>
       <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
+      <br></br>
+      <p className={styles.textOutput}>
+        <ol>
+          <li>Depending on your device:
+            <ul>
+              <li>For Windows: Use the Snipping tool to take a snippet of the text message you want to analyze and save it.</li>
+              <li>For Mac: Press and hold these three keys together: Shift, Command, and 3 
+              to take a screenshot of the text message and save it.</li>
+            </ul>
+          </li>  
+          <li>Click on the "select file" button and select your text message.</li>
+          <li>Click on "get pirate's opinion" to analyze your text message.</li>
+          <li>Profit! Now you know the chance your text message is a scam and you can act accordingly!</li>
+        </ol>
+      </p>
     </div>
   );
 
