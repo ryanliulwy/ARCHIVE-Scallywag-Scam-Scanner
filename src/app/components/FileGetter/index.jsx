@@ -102,7 +102,7 @@ const FileGetter = () => {
   }
 
   return (
-    <>
+    
       <div className={styles.card}>
         <h1 className={styles.header}>Scallywag Scanner
         <br></br>
