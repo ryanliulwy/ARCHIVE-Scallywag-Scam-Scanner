@@ -1,11 +1,13 @@
 .main {
   margin-bottom: 2rem;
+  background-color: #F0F2E9;
   font-family: aye-matey;
   font-size: 1.5rem;
-  margin: 2rem;
+  margin: auto;
 }
 
 .header {
+  flex-grow: 1;
   font-size: 3rem;
   text-align: center;
   padding: 4rem;

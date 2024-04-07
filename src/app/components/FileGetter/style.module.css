@@ -11,12 +11,39 @@
 }
 
 .header {
+  flex-grow: 1;
   font-size: 3rem;
   text-align: center;
-  padding: 4rem;
+  padding: 3rem;
   font-family: treasure-map;
   background-color: #7fb9c4;
   border: 2px solid #333c65;
+}
+
+.header2 {
+  justify-content: center;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: aye-matey;
+}
+
+.image {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 70%;
+  max-height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.textOutput {
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: aye-matey;
+  margin-left: 30rem;
+  margin-right: 30rem;
 }
 
 .button {

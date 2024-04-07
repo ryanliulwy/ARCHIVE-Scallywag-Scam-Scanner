@@ -85,8 +85,10 @@ const FileGetter = () => {
 
   return (
     <div className={styles.card}>
-      <h1 className={styles.header}>Scallywag Scanner</h1>
-      
+      <h1 className={styles.header}>Scallywag Scanner
+      <br></br>
+      <div className={styles.header2}>check if your messages are likely spam!</div> 
+      </h1>
       <label htmlFor="file-upload">
         select file
         <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
@@ -103,8 +105,8 @@ const FileGetter = () => {
       
 
       {file ? 
-        <div><p>{output}</p>
-        <img src={file} />
+        <div><p className={styles.textOutput}>{output}</p>
+        <img className={styles.image}src={file} />
         </div>
        : null}
 
