@@ -51,7 +51,7 @@ const FileGetter = () => {
         const response = await result.response;
         const text = response.text();
         // console.log(text);
-        console.log(`Parsed ${parsePercentage(text, imageParts)}`);
+        await console.log(`Parsed ${parsePercentage(text, imageParts)}`);
         setPercentage(parsePercentage(text, imageParts));
         setOutput(text);
         setPressed(false);
@@ -61,11 +61,11 @@ const FileGetter = () => {
             console.log("no image or ran out of tokens bb");
             return;
           }
-          await new Promise(r => setTimeout(r, 2000));
+          // await new Promise(r => setTimeout(r, 2000));
 
           console.log(error.name);
 
-          setOutput(output+'.');
+          //setOutput(output+'.');
           console.log(`Errored ${error.message}`);
           
           await run();
@@ -74,30 +74,36 @@ const FileGetter = () => {
       
     }
 
-    async function parsePercentage(response, imgParts) {
-      if (response.includes("%")) {
-        let resBefore = response.substring(0, response.indexOf("%"));
-        resBefore = resBefore.substring(resBefore.lastIndexOf(" "));
-        console.log(resBefore);
-        return resBefore;
-      }
-      else {
-        const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
-        const prompt_percentage = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
-        const result_percentage = await model.generateContent([prompt_percentage, ...imgParts]);
-        const response_percentage = await result_percentage.response;
-        const text_percentage = response_percentage.text();
-        console.log(text_percentage);
-        return text_percentage.substring(0, response.indexOf("%"));
-      }
-    }
-
     run();
-  }, [pressed]);
+  }, [pressed, percentage]);
+
+  function parsePercentage(response, imgParts) {
+    if (response.includes("%")) {
+      let resBefore = response.substring(0, response.indexOf("%"));
+      resBefore = resBefore.substring(resBefore.lastIndexOf(" "));
+      console.log(resBefore);
+      return resBefore;
+    }
+    else {
+      const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+      const prompt_percentage = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
+      let result_percentage = '';
+      let response_percentage = '';
+      (async () => {
+        result_percentage = await model.generateContent([prompt_percentage, ...imgParts]);
+        response_percentage = await result_percentage.response;
+      })();
+      
+      const text_percentage = response_percentage.text();
+      console.log(text_percentage);
+      return text_percentage.substring(0, response.indexOf("%"));
+    }
+  }
 
   return (
     <div className={styles.card}>
       <h1 className={styles.header}>Scallywag Scanner</h1>
+      <p>percentage: {percentage}</p>
       <p>percentage is a number: {parseInt(percentage) instanceof Number}</p>
 
       {/* {percentage ? 
@@ -108,7 +114,7 @@ const FileGetter = () => {
         : null} */}
 
       {percentage ? (
-        (percentage > "75") ? 
+        (parseInt(percentage) > 75) ? 
           <div className={styles.card} style={{backgroundColor: "#333c65"}}> 
             <h2 className={styles.card_title} style={{color: "white"}}>{percentage}%</h2>
             <p className={styles.card_price} style={{color: "white"}}>likely to be a scam</p>
