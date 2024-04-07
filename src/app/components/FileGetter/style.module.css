@@ -10,6 +10,15 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+.header {
+  font-size: 3rem;
+  text-align: center;
+  padding: 4rem;
+  font-family: treasure-map;
+  background-color: #7fb9c4;
+  border: 2px solid #333c65;
+}
+
 /* Card Image  */
 .card_img {
   flex-grow: 1;
