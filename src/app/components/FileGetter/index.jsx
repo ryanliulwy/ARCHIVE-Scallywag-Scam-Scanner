@@ -158,7 +158,7 @@ const FileGetter = () => {
       <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
       <br></br>
       <h3>Depending on your device:</h3>
-      <p className={styles.textOutput}>
+      <p className={`${styles.textOutput} ${styles.background}`}>
         <ol>
           <li>Get an image of your suspicous chat logs!
             <ul>
