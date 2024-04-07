@@ -42,11 +42,14 @@
 .textOutput {
   flex-grow: 1;
   display: flex;
-  text-align: center;
-  font-size: 1.5rem;
+  text-align: left;
+  font-size: 2rem;
   font-family: aye-matey;
   margin-left: 20%;
   margin-right: 20%;
+  line-height: 1.5;
+  background-color: #c9d5e3b7;
+  border-radius: 24px;
 }
 /*
 .buttonSelectFile{ 

@@ -157,9 +157,10 @@ const FileGetter = () => {
       <br></br>
       <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
       <br></br>
+      <h3>Depending on your device:</h3>
       <p className={styles.textOutput}>
         <ol>
-          <li>Depending on your device:
+          <li>Get an image of your suspicous chat logs!
             <ul>
               <li>For Windows: Use the Snipping tool to take a snippet of the text message you want to analyze and save it.</li>
               <li>For Mac: Press and hold these three keys together: Shift, Command, and 3 
