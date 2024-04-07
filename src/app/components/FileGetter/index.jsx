@@ -97,7 +97,9 @@ const FileGetter = () => {
 
   return (
     <div className={styles.card}>
-      <h1 className={styles.header}>Scallywag Scanner</h1>
+      <h1 className={styles.header}>Scallywag Scanner
+      <br></br>
+      <div className={styles.header2}>check if your messages are likely spam!</div> </h1>
       <p>percentage is a number: {parseInt(percentage) instanceof Number}</p>
 
       {/* {percentage ? 
