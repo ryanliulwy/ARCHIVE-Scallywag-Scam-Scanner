@@ -8,6 +8,7 @@ import { GoogleGenerativeAI} from "@google/generative-ai";
 const FileGetter = () => {
   const [file, setFile] = useState('');
   const [output, setOutput] = useState('');
+  const [percentage, setPercentage] = useState('');
   const [pressed, setPressed] = useState(false);
   const inputRef = useRef();
   
@@ -45,50 +46,84 @@ const FileGetter = () => {
           [...fileInputEl.files].map(fileToGenerativePart)
         );
 
-      const prompt_percentage = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
-      const result_percentage = await model.generateContent([prompt_percentage, ...imageParts]);
-      const response_percentage = await result_percentage.response;
-      const text_percentage = response_percentage.text();
-      console.log(text_percentage);
+        const prompt = "What is the percentage that this message is a scam? Give only the percentage and explain briefly. Reply in Pirate Speak";  
+        const result = await model.generateContent([prompt, ...imageParts]);
+        const response = await result.response;
+        const text = response.text();
+        // console.log(text);
+        console.log(`Parsed ${parsePercentage(text, imageParts)}`);
+        setPercentage(parsePercentage(text, imageParts));
+        setOutput(text);
+        setPressed(false);
+        console.log("Success!");
+        }catch(error){
+          if(error.message.includes('[400 ] Add an image to use models/gemini-pro-vision, or switch your model to a text model.')){
+            console.log("no image or ran out of tokens bb");
+            return;
+          }
+          await new Promise(r => setTimeout(r, 2000));
 
-      const prompt = "What is the percentage that this message is a scam? Give only the percentage and explain briefly. Reply in Pirate Speak";
+          console.log(error.name);
 
-  
-      const result = await model.generateContent([prompt, ...imageParts]);
-      const response = await result.response;
-      const text = response.text();
-      // console.log(text);
-      setOutput(text);
-      setPressed(false);
-      console.log("Success!");
-      }catch(error){
-        if(error.message.includes('[400 ] Add an image to use models/gemini-pro-vision, or switch your model to a text model.')){
-          console.log("no image or ran out of tokens bb");
-          return;
-        }
-        await new Promise(r => setTimeout(r, 2000));
-
-        console.log(error.name);
-
-        setOutput(output+'.');
-        console.log(`Errored ${error.message}`);
-        
-        await run();
-        
+          setOutput(output+'.');
+          console.log(`Errored ${error.message}`);
+          
+          await run();
+          
       }
       
+    }
+
+    async function parsePercentage(response, imgParts) {
+      if (response.includes("%")) {
+        let resBefore = response.substring(0, response.indexOf("%"));
+        resBefore = resBefore.substring(resBefore.lastIndexOf(" "));
+        console.log(resBefore);
+        return resBefore;
+      }
+      else {
+        const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+        const prompt_percentage = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
+        const result_percentage = await model.generateContent([prompt_percentage, ...imgParts]);
+        const response_percentage = await result_percentage.response;
+        const text_percentage = response_percentage.text();
+        console.log(text_percentage);
+        return text_percentage.substring(0, response.indexOf("%"));
+      }
     }
 
     run();
   }, [pressed]);
 
-
   return (
     <div className={styles.card}>
-      <h1 className={styles.header}>Scallywag Scanner
-      <br></br>
-      <div className={styles.header2}>check if your messages are likely spam!</div> 
-      </h1>
+      <h1 className={styles.header}>Scallywag Scanner</h1>
+      <p>percentage is a number: {parseInt(percentage) instanceof Number}</p>
+
+      {/* {percentage ? 
+        <div className={styles.card}>
+          <h2 className={styles.card_title}>{percentage}%</h2>
+          <p className={styles.card_price}>likely to be a scam</p>
+        </div>
+        : null} */}
+
+      {percentage ? (
+        (percentage > "75") ? 
+          <div className={styles.card} style={{backgroundColor: "#333c65"}}> 
+            <h2 className={styles.card_title} style={{color: "white"}}>{percentage}%</h2>
+            <p className={styles.card_price} style={{color: "white"}}>likely to be a scam</p>
+          </div>
+
+          :
+
+          <div className={styles.card} style={{backgroundColor: "#c9e3d6"}}> 
+            <h2 className={styles.card_title}>{percentage}%</h2>
+            <p className={styles.card_price}>likely to be a scam</p>
+          </div>
+        )
+    
+        : null }
+      
       <label htmlFor="file-upload">
         select file
         <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
