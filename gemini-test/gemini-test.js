@@ -3,7 +3,7 @@ const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold} = require("@google
 const fs = require("fs");
 
 // Access your API key as an environment variable (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI("AIzaSyDwEpAoo194P0WfEjdz01B5O9MvhOka6kE"); // process.env.API_KEY
+const genAI = new GoogleGenerativeAI("AIzaSyAPCzI34c6BFFoJuOORzhi8Crx1uboa03c"); // process.env.API_KEY
 
 // Converts local file information to a GoogleGenerativeAI.Part object.
 function fileToGenerativePart(path, mimeType) {
@@ -19,7 +19,7 @@ async function run() {
   // text-and-image input (multimodal)
   const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
-  const prompt = "Is this text spam? Answer in pirate-speak.";
+  const prompt = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
 
   const imageParts = [
     fileToGenerativePart("gemini-test/spam-texts/safe.jpg", "image/jpeg"),

@@ -31,18 +31,26 @@ const FileGetter = () => {
       // For text-and-images input (multimodal), use the gemini-pro-vision model
       const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
-      const prompt = "Translate the text in this image to pirate speak.";
+
 
       const fileInputEl = document.querySelector("input[type=file]");
       const imageParts = await Promise.all(
         [...fileInputEl.files].map(fileToGenerativePart)
       );
 
+      const prompt_percentage = "What is the likelihood that this message is a scam? Give only the percentage and do not explain.";
+      const result_percentage = await model.generateContent([prompt_percentage, ...imageParts]);
+      const response_percentage = await result_percentage.response;
+      const text_percentage = response_percentage.text();
+      console.log(text_percentage);
+
+      const prompt = "Is this text spam? Answer in pirate-speak.";
       const result = await model.generateContent([prompt, ...imageParts]);
       const response = await result.response;
       const text = response.text();
       console.log(text);
-      setOutput(text);
+
+      setOutput(text_percentage + "\n" + text);
     }
 
     run();
