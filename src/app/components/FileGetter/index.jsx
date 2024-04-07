@@ -90,7 +90,13 @@ const FileGetter = () => {
       <label htmlFor="file-upload">
         select file
         <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
-            onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
+            onChange={() => 
+              {
+                setFile(URL.createObjectURL(inputRef.current.files[0])); 
+                setPressed(false);
+                setOutput("Press the 'get pirate opinion' button!");
+              }
+            }
             ref={inputRef}>
         </input>
       </label>
@@ -103,7 +109,7 @@ const FileGetter = () => {
        : null}
 
       <br></br>
-      <button className={styles.button} onClick={() => setPressed(true)}>get pirate's opinion!</button>
+      <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
     </div>
   );
 
