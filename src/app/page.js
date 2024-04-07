@@ -16,3 +16,4 @@ export default function Home() {
 
 // Image types: https://ai.google.dev/docs/gemini_api_overview#image_requirements
 // Get Input Value: https://bobbyhadz.com/blog/react-get-input-value
+
