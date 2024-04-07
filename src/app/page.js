@@ -8,12 +8,10 @@ export default function Home() {
   const [file, setFile] = useState('');
   const inputRef = useRef();
 
-
-
   return (
     <main className={styles.main}>
-      <h1 className={styles.store_header}>Scallywag Scanner</h1>
-      <label htmlFor="myfile">Select a file:</label>
+      <h1 className={styles.header}>Scallywag Scanner</h1>
+      <label htmlFor="myfile">Select a file: </label>
       <input type="file" id="myfile" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
                 ref={inputRef}>
 

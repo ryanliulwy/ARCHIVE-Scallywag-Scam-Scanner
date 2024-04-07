@@ -1,11 +1,15 @@
 .main {
   margin-bottom: 2rem;
+  font-family: aye-matey;
+  font-size: 1.5rem;
+  margin: 2rem;
 }
 
-.store_header {
-  font-size: 1.75rem;
+.header {
+  font-size: 2.5rem;
   text-align: center;
   margin: 2rem;
+  font-family: treasure-map;
 }
 
 .store_cards {
@@ -14,4 +18,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+}
+
+@font-face {
+  font-family: treasure-map;
+  src: url(../fonts/Treasuremap.ttf) format("opentype");
+}
+.treasure-map {
+  font-family: treasure-map;
+}
+
+@font-face {
+  font-family: aye-matey;
+  src: url(../fonts/Ayematey.ttf) format("opentype");
+}
+.aye-matey {
+  font-family: aye-matey;
 }
