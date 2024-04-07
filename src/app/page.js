@@ -1,4 +1,5 @@
 import FileGetter from "./components/FileGetter";
+import Waves from "./components/Waves";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -6,8 +7,10 @@ export default function Home() {
   
 
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main}`}>
       <FileGetter></FileGetter>
+      <Waves />
+
     </main>
   );
 }

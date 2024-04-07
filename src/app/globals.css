@@ -6,6 +6,17 @@ body {
     sans-serif;
   font-size: 100%;
   background-color: #E5F2F4;
+  height: 100%;
+}
+
+section{
+  position: fixed;
+  pointer-events: none;
+  width: 100%;
+  height: 100vh;
+  /* background: #E5F2F4; */
+  overflow: hidden;
+  bottom: 0;
 }
 
 input[type="file"] {
