@@ -103,8 +103,6 @@ const FileGetter = () => {
   return (
     <div className={styles.card}>
       <h1 className={styles.header}>Scallywag Scanner</h1>
-      <p>percentage: {percentage}</p>
-      <p>percentage is a number: {parseInt(percentage) instanceof Number}</p>
 
       {/* {percentage ? 
         <div className={styles.card}>
