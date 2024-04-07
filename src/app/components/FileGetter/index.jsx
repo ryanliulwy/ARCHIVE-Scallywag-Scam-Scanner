@@ -3,6 +3,7 @@
 import styles from "./style.module.css";
 import { useEffect, useState, useRef } from "react";
 import { GoogleGenerativeAI} from "@google/generative-ai";
+import Waves from "../Waves";
 
 
 const FileGetter = () => {
@@ -101,60 +102,66 @@ const FileGetter = () => {
   }
 
   return (
-    <div className={styles.card}>
-      <h1 className={styles.header}>Scallywag Scanner
-      <br></br>
-      <div className={styles.header2}>check if your messages are likely spam!</div> </h1>
-      <p>percentage is a number: {parseInt(percentage) instanceof Number}</p>
+    <>
+      <div className={styles.card}>
+        <h1 className={styles.header}>Scallywag Scanner
+        <br></br>
+        <div className={styles.header2}>check if your messages are likely spam!</div> 
+        </h1>
 
-      {/* {percentage ? 
-        <div className={styles.card}>
-          <h2 className={styles.card_title}>{percentage}%</h2>
-          <p className={styles.card_price}>likely to be a scam</p>
-        </div>
-        : null} */}
-
-      {percentage ? (
-        (parseInt(percentage) > 75) ? 
-          <div className={styles.card} style={{backgroundColor: "#EEC01B"}}> 
-            <h2 className={styles.card_title} style={{color: "white"}}>{percentage}%</h2>
-            <p className={styles.card_price} style={{color: "white"}}>likely to be a scam</p>
-          </div>
-
-          :
-
-          <div className={styles.card} style={{backgroundColor: "#c9e3d6"}}> 
+        {/* {percentage ? 
+          <div className={styles.card}>
             <h2 className={styles.card_title}>{percentage}%</h2>
             <p className={styles.card_price}>likely to be a scam</p>
           </div>
-        )
-    
-        : null }
+          : null} */}
+
+        {percentage ? (
+          (parseInt(percentage) > 75) ? 
+            <div className={styles.card} style={{backgroundColor: "#EEC01B"}}> 
+              <h2 className={styles.card_title} style={{color: "white"}}>{percentage}%</h2>
+              <p className={styles.card_price} style={{color: "white"}}>likely to be a scam</p>
+            </div>
+
+            :
+
+            <div className={styles.card} style={{backgroundColor: "#c9e3d6"}}> 
+              <h2 className={styles.card_title}>{percentage}%</h2>
+              <p className={styles.card_price}>likely to be a scam</p>
+            </div>
+          )
       
-      <label htmlFor="file-upload">
-        select file
-        <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
-            onChange={() => 
-              {
-                setFile(URL.createObjectURL(inputRef.current.files[0])); 
-                setPressed(false);
-                setOutput("Press the 'get pirate opinion' button!");
+          : null }
+        
+        <label htmlFor="file-upload">
+          select file
+          <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
+              onChange={() => 
+                {
+                  setFile(URL.createObjectURL(inputRef.current.files[0])); 
+                  setPressed(false);
+                  setOutput("Press the 'get pirate opinion' button!");
+                }
               }
-            }
-            ref={inputRef}>
-        </input>
-      </label>
+              ref={inputRef}>
+          </input>
+        </label>
+        
+
+        {file ? 
+          <div><p className={styles.textOutput}>{output}</p>
+          <img className={styles.image}src={file} />
+          </div>
+        : null}
+
+        <br></br>
+        <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
+        
+        
+      </div>
       
-
-      {file ? 
-        <div><p className={styles.textOutput}>{output}</p>
-        <img className={styles.image}src={file} />
-        </div>
-       : null}
-
-      <br></br>
-      <button className={styles.button} onClick={() => {setPressed(true)}}>get pirate's opinion!</button>
-    </div>
+    </>
+    
   );
 
 };

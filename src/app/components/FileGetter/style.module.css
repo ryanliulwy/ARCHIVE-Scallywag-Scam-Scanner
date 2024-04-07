@@ -9,6 +9,7 @@
   padding-bottom: 1rem;
   min-height: 50px;
   border-radius: 5px;
+  z-index: 2;
 }
 
 .header {
@@ -114,3 +115,5 @@
 .card_button :hover {
   cursor: pointer;
 }
+
+

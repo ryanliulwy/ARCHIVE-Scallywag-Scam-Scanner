@@ -1,6 +1,8 @@
 .main {
   font-family: aye-matey;
   font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -44,3 +46,5 @@
 .aye-matey {
   font-family: aye-matey;
 }
+
+/* https://stackoverflow.com/questions/46616711/css-keep-footer-at-bottom-with-expanding-content */
