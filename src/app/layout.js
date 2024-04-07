@@ -4,8 +4,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Pirate Marketplace",
-  description: "A marketplace for pirates to buy items",
+  title: "Scallywag Scanner",
+  description: "Be yer cyberscrolls marked by hornswaggle?",
 };
 
 export default function RootLayout({ children }) {

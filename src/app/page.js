@@ -1,6 +1,6 @@
 'use client'
 
-// import styles from "./page.module.css";
+import styles from "./page.module.css";
 import { useState, useRef } from "react";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.store_header}>Pirate Marketplace</h1>
+      <h1 className={styles.store_header}>Scallywag Scanner</h1>
       <label htmlFor="myfile">Select a file:</label>
       <input type="file" id="myfile" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
                 ref={inputRef}>
