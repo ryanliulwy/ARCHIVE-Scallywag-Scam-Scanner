@@ -5,6 +5,7 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-size: 100%;
+  background-color: #E5F2F4;
 }
 
 input[type="file"] {

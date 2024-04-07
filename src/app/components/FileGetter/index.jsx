@@ -116,7 +116,7 @@ const FileGetter = () => {
 
       {percentage ? (
         (parseInt(percentage) > 75) ? 
-          <div className={styles.card} style={{backgroundColor: "#333c65"}}> 
+          <div className={styles.card} style={{backgroundColor: "#EEC01B"}}> 
             <h2 className={styles.card_title} style={{color: "white"}}>{percentage}%</h2>
             <p className={styles.card_price} style={{color: "white"}}>likely to be a scam</p>
           </div>
