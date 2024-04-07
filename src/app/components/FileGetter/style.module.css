@@ -19,6 +19,22 @@
   border: 2px solid #333c65;
 }
 
+.button {
+  background-color: #ceebef;
+  border: 2px solid #333c65;
+  border-radius: 1rem;
+  inline-size: 12rem;
+  block-size: 4rem;
+  font-size: 1.25rem;
+  align-self: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: aye-matey;
+  font-weight: bold;
+}
+.button:hover {background-color: #c9e3d6}
+
+
 /* Card Image  */
 .card_img {
   flex-grow: 1;

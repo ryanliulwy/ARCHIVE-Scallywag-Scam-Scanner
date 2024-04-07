@@ -53,7 +53,7 @@ const FileGetter = () => {
     <div className={styles.card}>
       <h1 className={styles.header}>Scallywag Scanner</h1>
       
-      <label className={styles.button} htmlFor="file-upload">
+      <label htmlFor="file-upload">
         select file
         <input type="file" id="file-upload" name="myfile" accept=".png, .jpg, .jpeg, .webp, .heic, .heif" 
             onInput={() => setFile(URL.createObjectURL(inputRef.current.files[0]))}
