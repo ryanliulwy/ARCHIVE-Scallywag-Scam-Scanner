@@ -1,4 +1,8 @@
 import { config } from 'dotenv';
+// https://www.npmjs.com/package/dotenv/v/8.2.0
+// Multiple .env files: https://stackoverflow.com/questions/55406055/toggle-between-multiple-env-files-like-env-development-with-node-js 
+
+
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
 import readline from 'readline'
